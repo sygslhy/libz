@@ -16,8 +16,6 @@ if(MINGW OR MSYS)
     add_compile_options("$<$<COMPILE_LANGUAGE:CXX>:-std=c++17>")
 endif()
 
-add_subdirectory(impact)
-
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
     add_compile_options("$<$<COMPILE_LANGUAGE:CXX>:-std=c++17>")
 endif()
@@ -25,3 +23,5 @@ endif()
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     add_compile_options("$<$<COMPILE_LANGUAGE:CXX>:-std=gnu++17>")
 endif()
+
+add_subdirectory(my_cmake)
