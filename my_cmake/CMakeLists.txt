@@ -54,7 +54,10 @@ endif()
 add_library(${TARGET} STATIC ${PRIVATE_HDRS} ${PUBLIC_HDRS} ${SRCS})
 set_target_properties(${TARGET} PROPERTIES PUBLIC_HEADER "${PUBLIC_HDRS}")
 
+# Build everything as static for MinGW to avoid any DLL dependency
+if(MINGW OR MSYS)
+    target_link_libraries(${TARGET} PRIVATE "-static -static-libgcc -static-libstdc++")
+endif()
+
 # specify where the public headers of this library are
 target_include_directories(${TARGET} PUBLIC $<BUILD_INTERFACE:${PUBLIC_HDR_DIR}> $<INSTALL_INTERFACE:include>)
-
-
